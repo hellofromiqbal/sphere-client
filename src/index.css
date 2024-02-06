@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.reactQuill ul {
+  list-style: disc;
+  padding: 0 0 0 20px;
+}
+
+.reactQuill ol {
+  list-style: decimal;
+  padding: 0 0 0 20px;
+}
+
+.reactQuill em {
+  display: flex;
+  border-left: 3px solid black;
+  padding: 0 0 0 20px;
+}
+
+.reactQuill .ql-indent-1 {
+  text-indent: 5rem;
+}
+.reactQuill .ql-indent-2 {
+  text-indent: 10rem;
+}
+.reactQuill .ql-indent-3 {
+  text-indent: 15rem;
+}
+.reactQuill .ql-indent-4 {
+  text-indent: 20rem;
+}
+.reactQuill .ql-indent-5 {
+  text-indent: 25rem;
+}
+.reactQuill .ql-indent-6 {
+  text-indent: 30rem;
+}
+.reactQuill .ql-indent-7 {
+  text-indent: 35rem;
+}
+.reactQuill .ql-indent-8 {
+  text-indent: 40rem;
+}
