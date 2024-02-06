@@ -62,8 +62,8 @@ const UserQuickProfile = ({ currentUser, currentUserProfile, handleShwoModal }) 
         <div className='flex flex-col justify-center'>
           <Link to={`/${currentUserProfile?.username}`} className='text-xl md:text-4xl lg:text-base'>{currentUserProfile?.fullname}</Link>
           <div className="flex flex-row gap-4">
-            <button onClick={() => handleShwoModal('followers')} className="w-max text-sm opacity-60 md:hidden lg:block">{currentUserProfile?.followers?.length} Followers</button>
-            <button onClick={() => handleShwoModal('following')} className="w-max text-sm opacity-60 md:hidden lg:block">{currentUserProfile?.following?.length} Following</button>
+            <button onClick={() => handleShwoModal('followers')} className="w-max text-sm opacity-60 md:block">{currentUserProfile?.followers?.length} Followers</button>
+            <button onClick={() => handleShwoModal('following')} className="w-max text-sm opacity-60 md:block">{currentUserProfile?.following?.length} Following</button>
           </div>
         </div>
       </div>
@@ -74,10 +74,10 @@ const UserQuickProfile = ({ currentUser, currentUserProfile, handleShwoModal }) 
         <div className='flex gap-2'>
           <button
             type="submit"
-            className={`${userAlreadyFollowing ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} text-sm md:text-base py-2 md:px-4 lg:px-4 lg:py-1 w-full md:w-[100px] lg:w-max rounded-full text-white`}
+            className={`${userAlreadyFollowing ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} text-sm md:text-base rounded-full text-white flex justify-center items-center h-[30px] w-full py-2 px-8`}
             onClick={userAlreadyFollowing ? () => handleUnfollowing(currentUser?._id) : () => handleFollowing(currentUser?._id)}
           >{userAlreadyFollowing ? 'Unfollow' : 'Follow'}</button>
-          <button type="submit" className="text-sm md:text-base bg-green-500 hover:bg-green-600 p-2 md:p-4 lg:p-2 rounded-full text-white font-semibold flex justify-center items-center">
+          <button type="submit" className="text-sm md:text-base bg-green-500 hover:bg-green-600 rounded-full text-white font-semibold flex justify-center items-center h-[30px] py-2 px-2">
             <GoMail className='w-[20px] h-[20px]'/>
           </button>
         </div>

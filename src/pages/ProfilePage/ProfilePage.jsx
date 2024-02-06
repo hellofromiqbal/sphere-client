@@ -59,7 +59,7 @@ const ProfilePage = () => {
       </div>
       {showModal.status &&
         <div className='fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-10 flex justify-center items-center'>
-          <div className='flex flex-col bg-white opacity-100 p-6 rounded-md w-1/2 relative max-h-[70vh]'>
+          <div className='flex flex-col bg-white opacity-100 p-6 rounded-md w-[90%] md:w-[60%] lg:w-[40%] relative max-h-[70vh]'>
             <button onClick={() => setShowModal({ status: false, type: ''})} className="absolute top-2 right-2">
               <IoIosCloseCircleOutline className="w-[25px] md:w-[25px] h-[25px] md:h-[25px]"/>
             </button>
@@ -77,7 +77,7 @@ const ProfilePage = () => {
                     <div>
                       <button
                         onClick={() => handleVisitButton(`/${item?.user?.username}`)}
-                        className='bg-green-500 hover:bg-green-600 text-white text-sm md:text-base py-2 md:px-4 lg:px-4 lg:py-2 w-full md:w-[100px] lg:w-max rounded-full'
+                        className='bg-green-500 hover:bg-green-600 text-white text-sm py-1 px-3 w-full md:w-[100px] lg:w-max rounded-full'
                       >Visit</button>
                     </div>
                   </div>
