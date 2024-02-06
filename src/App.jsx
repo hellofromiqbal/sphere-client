@@ -16,7 +16,7 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path='/' element={<MainPage/>} />
+        <Route path='/' element={currentUser ? <Navigate to={"/home"}/> : <MainPage/>} />
         <Route path='/:username' element={<ProfilePage/>} />
         <Route path='/:username/edit' element={<EditProfilePage/>} />
         <Route path='/articles/:id' element={<ArticlePage/>} />
