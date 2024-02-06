@@ -21,12 +21,12 @@ const ProfilePage = () => {
     type: ''
   });
 
-  useEffect(() => {
-    fetch(`${apiUrl}/users/me`, { credentials: 'include' })
-      .then((res) => res.json())
-      .then((data) => dispatch(setOwnProfile(data.data)))
-      .catch((error) => console.log(error.message));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${apiUrl}/users/me`, { credentials: 'include' })
+  //     .then((res) => res.json())
+  //     .then((data) => dispatch(setOwnProfile(data.data)))
+  //     .catch((error) => console.log(error.message));
+  // }, []);
 
   useEffect(() => {
     fetch(`${apiUrl}/users/${username}`, { credentials: 'include' })
