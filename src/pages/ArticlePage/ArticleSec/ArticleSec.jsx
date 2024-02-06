@@ -9,14 +9,14 @@ import DOMPurify from 'dompurify';
 import timeGenerator from "../../../helpers/timeGenerator";
 
 const ArticleSec = ({ handleShowResponseSec }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const dispatch = useDispatch();
   const currentArticle = useSelector(selectArticle);
   const [articleDetails, setArticleDetails] = useState({});
-  console.log(currentArticle);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/${id}`)
+    fetch(`${apiUrl}/articles/${id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data.data);

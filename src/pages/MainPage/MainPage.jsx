@@ -1,13 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
 import JumboSec from "./JumboSec/JumboSec"
 import TrendingSec from "./TrendingSec/TrendingSec"
 import ArticleListSec from "./ArticleListSec/ArticleListSec"
 
 const MainPage = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [trendingArticles, setTrendingArticles] = useState([]);
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch(`${apiUrl}/articles`)
       .then((res) => res.json())
       .then((data) => {
         setArticles(data.data);

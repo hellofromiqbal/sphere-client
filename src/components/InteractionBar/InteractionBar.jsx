@@ -8,6 +8,7 @@ import { deleteArticleFromOwnArticles, addArticleToOwnArchives, deleteArticleFro
 import { addUserToArticleLikes, deleteUserFromArticleLikes } from '../../redux/articleSlice';
 
 const InteractionBar = ({ currentArticle, handleResponseIconClick, location = 'top' }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector(selectOwnProfile);
@@ -16,7 +17,7 @@ const InteractionBar = ({ currentArticle, handleResponseIconClick, location = 't
   
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/articles/${currentArticle?._id}`, {
+      const res = await fetch(`${apiUrl}/articles/${currentArticle?._id}`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentUserId: currentUser?._id })
@@ -36,7 +37,7 @@ const InteractionBar = ({ currentArticle, handleResponseIconClick, location = 't
 
   const handleAddToArchive = async (articleId) => {
     try {
-      const res = await fetch(`http://localhost:3000/users/update/archives/${currentUser?._id}`, {
+      const res = await fetch(`${apiUrl}/users/update/archives/${currentUser?._id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ articleId })
@@ -55,7 +56,7 @@ const InteractionBar = ({ currentArticle, handleResponseIconClick, location = 't
 
   const handleDeleteFromArchive = async (articleId) => {
     try {
-      const res = await fetch(`http://localhost:3000/users/update/archives/${currentUser?._id}`, {
+      const res = await fetch(`${apiUrl}/users/update/archives/${currentUser?._id}`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ articleId })
@@ -74,7 +75,7 @@ const InteractionBar = ({ currentArticle, handleResponseIconClick, location = 't
 
   const handleLikeArticle = async (currentUserId) => {
     try {
-      const res = await fetch(`http://localhost:3000/articles/update/likes/${currentArticle?._id}`, {
+      const res = await fetch(`${apiUrl}/articles/update/likes/${currentArticle?._id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentUserId })
@@ -93,7 +94,7 @@ const InteractionBar = ({ currentArticle, handleResponseIconClick, location = 't
 
   const handleUnlikeArticle = async (currentUserId) => {
     try {
-      const res = await fetch(`http://localhost:3000/articles/update/likes/${currentArticle?._id}`, {
+      const res = await fetch(`${apiUrl}/articles/update/likes/${currentArticle?._id}`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentUserId })

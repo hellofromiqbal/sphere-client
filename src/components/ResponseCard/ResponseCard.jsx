@@ -7,13 +7,14 @@ import { deleteResponseFromArticleResponses, selectArticle } from "../../redux/a
 import timeGenerator from "../../helpers/timeGenerator";
 
 const ResponseCard = ({ response }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const dispatch = useDispatch();
   const currentUser = useSelector(selectOwnProfile);
   const currentArticle = useSelector(selectArticle);
   const handleDelete = async (currentResponseId) => {
     try {
-      const res = await fetch(`http://localhost:3000/articles/update/responses/${id}`, {
+      const res = await fetch(`${apiUrl}/articles/update/responses/${id}`, {
         credentials: 'include',
         cache: 'no-store',
         method: 'DELETE',

@@ -10,6 +10,7 @@ import { selectUserProfile, setUserProfile } from '../../redux/userProfileSlice'
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const ProfilePage = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { username } = useParams();
   const dispatch = useDispatch();
@@ -21,14 +22,14 @@ const ProfilePage = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:3000/users/me', { credentials: 'include' })
+    fetch(`${apiUrl}/users/me`, { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => dispatch(setOwnProfile(data.data)))
       .catch((error) => console.log(error.message));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/${username}`, { credentials: 'include' })
+    fetch(`${apiUrl}/users/${username}`, { credentials: 'include' })
     .then((res) => res.json())
     .then((data) => dispatch(setUserProfile(data.data)))
     .catch((error) => console.log(error.message));

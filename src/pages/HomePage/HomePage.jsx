@@ -4,10 +4,11 @@ import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import RecommendedTopics from "../../components/RecommendedTopics/RecommendedTopics";
 
 const HomePage = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [articles, setArticles] = useState([]);
-
+  
   useEffect(() => {
-    fetch('http://localhost:3000/articles') 
+    fetch(`${apiUrl}/articles`)
       .then((res) => res.json())
       .then((data) => setArticles(data.data))
       .catch((error) => console.log(error.message));

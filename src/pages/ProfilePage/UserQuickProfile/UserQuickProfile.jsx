@@ -7,12 +7,13 @@ import { addFollowingToOwnFollowing, deleteFollowingFromOwnFollowing } from '../
 import { addFollowersToUserProfileFollowers, deleteFollowersFromUserProfileFollowers } from "../../../redux/userProfileSlice";
 
 const UserQuickProfile = ({ currentUser, currentUserProfile, handleShwoModal }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const userAlreadyFollowing = currentUserProfile?.followers?.find((follower) => follower?.user?._id === currentUser?._id);
 
   const handleFollowing = async (currentUserId) => {
     try {
-      const res = await fetch(`http://localhost:3000/users/update/following/${currentUserProfile?._id}`, {
+      const res = await fetch(`${apiUrl}/users/update/following/${currentUserProfile?._id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentUserId })
@@ -32,7 +33,7 @@ const UserQuickProfile = ({ currentUser, currentUserProfile, handleShwoModal }) 
 
   const handleUnfollowing = async (currentUserId) => {
     try {
-      const res = await fetch(`http://localhost:3000/users/update/following/${currentUserProfile?._id}`, {
+      const res = await fetch(`${apiUrl}/users/update/following/${currentUserProfile?._id}`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentUserId })

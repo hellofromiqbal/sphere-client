@@ -8,11 +8,12 @@ import { formats, modules } from "../../reactQuil/config";
 import 'react-quill/dist/quill.snow.css';
 
 const EditArticleForm = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const [state, setState] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/${id}`)
+    fetch(`${apiUrl}/articles/${id}`)
       .then((res) => res.json())
       .then((data) => setState(data.data))
       .catch((error) => console.log(error.message));
@@ -22,7 +23,7 @@ const EditArticleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/articles/${id}`, {
+      const res = await fetch(`${apiUrl}/articles/${id}`, {
         credentials: 'include',
         cache: 'no-store',
         method: 'PUT',

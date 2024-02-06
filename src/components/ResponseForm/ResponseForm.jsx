@@ -7,6 +7,7 @@ import { selectOwnProfile } from '../../redux/ownProfileSlice';
 import { setArticle } from '../../redux/articleSlice';
 
 const ResponseForm = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const dispatch = useDispatch();
   const currentUser = useSelector(selectOwnProfile);
@@ -18,7 +19,7 @@ const ResponseForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/articles/update/responses/${id}`, {
+      const res = await fetch(`${apiUrl}/articles/update/responses/${id}`, {
         credentials: 'include',
         cache: 'no-store',
         method: 'PUT',

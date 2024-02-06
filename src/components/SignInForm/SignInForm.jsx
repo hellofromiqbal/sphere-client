@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const SignInForm = ({ handleClose }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [state, setState] = useState({
@@ -15,7 +16,7 @@ const SignInForm = ({ handleClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/users/sign-in', {
+      const response = await fetch(`${apiUrl}/users/sign-in`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         credentials: 'include',

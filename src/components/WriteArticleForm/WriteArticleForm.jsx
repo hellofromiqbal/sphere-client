@@ -7,6 +7,7 @@ import { formats, modules } from "../../reactQuil/config";
 import 'react-quill/dist/quill.snow.css';
 
 const WriteArticleForm = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector(selectOwnProfile);
@@ -19,7 +20,7 @@ const WriteArticleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3000/articles', {
+      const res = await fetch(`${apiUrl}/articles`, {
         credentials: 'include',
         cache: 'no-store',
         method: 'POST',

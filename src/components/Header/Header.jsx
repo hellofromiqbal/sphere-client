@@ -10,12 +10,13 @@ import { clearOwnProfile, selectOwnProfile, setOwnProfile } from '../../redux/ow
 import { useEffect } from 'react';
 
 const Header = ({ handleModal }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const currentUser = useSelector(selectOwnProfile);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/users/me', { credentials: 'include' })
+    fetch(`${apiUrl}/users/me`, { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => {
         dispatch(setOwnProfile(data.data));
@@ -23,7 +24,7 @@ const Header = ({ handleModal }) => {
   }, []);
 
   const handleSignOut = async () => {
-    fetch('http://localhost:3000/users/sign-out', {
+    fetch(`${apiUrl}/users/sign-out`, {
       cache: 'no-store',
       method: 'POST',
       headers: { "Content-Type": "application/json" },

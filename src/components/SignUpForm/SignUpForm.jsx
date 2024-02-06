@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const SignUpForm = ({ handleClose }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [state, setState] = useState({
     fullname: '',
     email: '',
@@ -12,7 +13,7 @@ const SignUpForm = ({ handleClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/users/sign-up', {
+      const response = await fetch(`${apiUrl}/users/sign-up`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(state)

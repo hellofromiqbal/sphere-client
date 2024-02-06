@@ -10,6 +10,7 @@ import { addArticleToOwnArchives, deleteArticleFromOwnArchives, deleteArticleFro
 import timeGenerator from "../../helpers/timeGenerator";
 
 const ArticleCard = ({ articleDetails }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector(selectOwnProfile);
@@ -20,7 +21,7 @@ const ArticleCard = ({ articleDetails }) => {
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/articles/${articleDetails?._id}`, {
+      const res = await fetch(`${apiUrl}/articles/${articleDetails?._id}`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentUserId: currentUser?._id })
@@ -40,7 +41,7 @@ const ArticleCard = ({ articleDetails }) => {
 
   const handleAddToArchive = async (articleId) => {
     try {
-      const res = await fetch(`http://localhost:3000/users/update/archives/${currentUser?._id}`, {
+      const res = await fetch(`${apiUrl}/users/update/archives/${currentUser?._id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ articleId })
@@ -59,7 +60,7 @@ const ArticleCard = ({ articleDetails }) => {
 
   const handleDeleteFromArchive = async (articleId) => {
     try {
-      const res = await fetch(`http://localhost:3000/users/update/archives/${currentUser?._id}`, {
+      const res = await fetch(`${apiUrl}/users/update/archives/${currentUser?._id}`, {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ articleId })

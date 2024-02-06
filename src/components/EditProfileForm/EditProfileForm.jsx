@@ -9,6 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 
 // eslint-disable-next-line react/prop-types
 const EditProfileForm = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector(selectOwnProfile);
@@ -22,7 +23,7 @@ const EditProfileForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/users/update/profile/${currentUser?._id}`, {
+      const response = await fetch(`${apiUrl}/users/update/profile/${currentUser?._id}`, {
         credentials: 'include',
         cache: 'no-store',
         method: 'PUT',
