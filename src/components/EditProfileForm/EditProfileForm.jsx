@@ -44,7 +44,7 @@ const EditProfileForm = () => {
   };
 
   return (
-    <form className="p-6 md:px-24 md:py-10 lg:px-72 lg:py-10 flex flex-col gap-14" onSubmit={handleSubmit}>
+    <form className="p-6 md:px-24 md:py-10 lg:px-72 lg:py-10 flex flex-col gap-20 md:gap-14" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-2">
         <input
           type="text"

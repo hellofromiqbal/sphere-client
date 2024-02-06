@@ -20,10 +20,13 @@ function App() {
         <Route path='/:username' element={<ProfilePage/>} />
         <Route path='/:username/edit' element={<EditProfilePage/>} />
         <Route path='/articles/:id' element={<ArticlePage/>} />
-        <Route path='/home' element={currentUser ? <HomePage/> : <Navigate to={"/"}/>}>
+        {/* <Route path='/home' element={currentUser ? <HomePage/> : <Navigate to={"/"}/>}>
           <Route path='write' element={<WritePage/>}/>
           <Route path='edit/:id' element={<EditPage/>}/>
-        </Route>
+        </Route> */}
+        <Route path='/home' element={currentUser ? <HomePage/> : <Navigate to={"/"}/>}/>
+        <Route path='/home/write' element={currentUser ? <WritePage/> : <Navigate to={"/"}/>}/>
+        <Route path='/home/edit/:id' element={currentUser ? <EditPage/> : <Navigate to={"/"}/>}/>
       </Routes>
     </Layout>
   )

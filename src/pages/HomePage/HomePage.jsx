@@ -15,7 +15,7 @@ const HomePage = () => {
   }, []);
   
   return (
-    <section className="flex flex-col-reverse lg:flex-row">
+    <section className="flex flex-col lg:flex-row">
       <div className="basis-2/3 flex flex-col gap-4 md:gap-10 px-6 py-5 md:p-10 lg:ps-20 lg:py-10">
         {articles?.map((article) => (
           <ArticleCard
