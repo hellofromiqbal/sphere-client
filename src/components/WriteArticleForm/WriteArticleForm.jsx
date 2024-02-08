@@ -63,7 +63,7 @@ const WriteArticleForm = () => {
             modules={modules}
             formats={formats}
             placeholder="Article content here..."
-            onChange={(e) => setState((prevState) => ({ ...prevState, content: e.target.value }))}
+            onChange={(content) => setState((prevState) => ({ ...prevState, content }))}
           />
         </div>
       </div>
